@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Aqua-Smart – Recherche en Aquaculture Intelligente</title>
+  <style>
+    /* ===== RESET & BASE ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #f9fbfd;
+    }
+    h1, h2, h3 {
+      margin-bottom: 1rem;
+      color: #00568f;
+    }
+    a { text-decoration: none; color: #0077cc; }
+    a:hover { text-decoration: underline; }
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 0;
+    }
+    section { margin-bottom: 3rem; }
+
+    /* ===== HEADER ===== */
+    header {
+      background: linear-gradient(135deg, #00568f 0%, #0099cc 100%);
+      color: white;
+      padding: 1.2rem 0;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .logo-aqua {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .logo-aqua img {
+      height: 90px; /* Augmenté comme demandé */
+      vertical-align: middle;
+    }
+    .usthb-logo {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      font-size: 0.85rem;
+      text-align: right;
+    }
+    .usthb-logo img {
+      height: 90px;
+      margin-top: 4px;
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.2rem;
+      margin-top: 8px;
+    }
+    nav a {
+      color: white;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+    nav a:hover { text-decoration: underline; }
+
+    /* ===== HERO ===== */
+    .hero {
+      text-align: center;
+      padding: 2.5rem 0 1.5rem;
+      background-color: white;
+      margin-bottom: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .hero h1 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      color: #00568f;
+    }
+    .hero p {
+      font-size: 1.15rem;
+      max-width: 800px;
+      margin: 0 auto 1.5rem;
+    }
+    .btn {
+      display: inline-block;
+      background: #0099cc;
+      color: white;
+      padding: 0.6rem 1.4rem;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    .btn:hover {
+      background: #0077aa;
+      text-decoration: none;
+    }
+
+    /* ===== TEAM PHOTO ===== */
+    .team-photo {
+      text-align: center;
+      margin: 1.5rem 0 2.5rem;
+    }
+    .team-photo img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    /* ===== SECTIONS ===== */
+    .section-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 1.8rem;
+      color: #00568f;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.8rem;
+    }
+    .card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+    .card h3 { color: #0077cc; }
+
+    /* ===== TEAM GRID ===== */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.2rem;
+      margin-top: 1rem;
+    }
+    .team-member {
+      text-align: center;
+      font-size: 0.95rem;
+    }
+    .team-member h4 {
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+      color: #00568f;
+    }
+    .team-member p {
+      color: #555;
+    }
+
+    /* ===== VIDEO & IMAGES ===== */
+    .demo-media {
+      margin-top: 1rem;
+      text-align: center;
+    }
+    .demo-media video,
+    .demo-media img {
+      width: 100%;
+      max-height: 220px;
+      object-fit: contain;
+      border-radius: 6px;
+      background: #fff;
+    }
+
+    /* ===== PARTNERS LOGOS ===== */
+    .partners-logos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2.5rem;
+      margin-top: 1.5rem;
+    }
+    .partner-logo {
+      text-align: center;
+      flex: 1;
+      min-width: 120px;
+      max-width: 180px;
+    }
+    .partner-logo img {
+      max-width: 100%;
+      height: auto;
+      max-height: 80px;
+      object-fit: contain;
+      filter: grayscale(0%);
+      transition: filter 0.3s;
+    }
+    .partner-logo img:hover {
+      filter: grayscale(0%) brightness(1.1);
+    }
+    .partner-name {
+      margin-top: 0.4rem;
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    /* ===== CONTACT ===== */
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 0.3rem;
+      font-weight: 500;
+    }
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.6rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-family: inherit;
+    }
+    .form-group textarea { height: 120px; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #003355;
+      color: white;
+      text-align: center;
+      padding: 1.5rem 0;
+      margin-top: 3rem;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        align-items: center;
+      }
+      .usthb-logo {
+        align-items: center;
+        text-align: center;
+      }
+      nav ul {
+        gap: 1rem;
+        flex-direction: column;
+        align-items: center;
+      }
+      .hero h1 { font-size: 1.8rem; }
+      .hero p { font-size: 1rem; }
+      .team-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER avec LOGO AQUA-SMART + USTHB -->
+  <header>
+    <div class="container header-content">
+      <div class="logo-aqua">
+        <img src="aquatsmartvision.jpg" alt="Aqua-Smart">
+        <div>
+          <div style="font-weight: bold; font-size: 1.1rem;">Aqua-Smart</div>
+          <div style="font-size: 0.85rem; opacity: 0.9;">Recherche Interdisciplinaire</div>
+        </div>
+      </div>
+
+      <div class="usthb-logo">
+        <div>République Algerienne Démocratique et Populaire</div>
+        <div>Ministère de l'enseignelent supérieur et de la recherche scientifique (USTHB)</div>
+        <div>Université des Sciences et de la Technologie Houari Boumediene (USTHB)</div>
+        <img src="usthb.jpg" alt="USTHB">
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="#accueil">Accueil</a></li>
+          <li><a href="#apropos">À propos</a></li>
+          <li><a href="#logiciels">Logiciels</a></li>
+          <li><a href="#equipe">Équipe</a></li>
+          <li><a href="#projets">Projets</a></li>
+          <li><a href="#partenaires">Partenaires</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CONTENU PRINCIPAL -->
+  <div class="container">
+
+    <!-- HERO -->
+    <div class="hero" id="accueil">
+      <h1>Aqua-Smart – Aquaculture Intelligente & Durable</h1>
+      <p>Equipe interdisciplinaire dédiée à l’innovation technologique pour une aquaculture résiliente, économe et adaptée aux zones arides, en collaboration entre l’Algérie et le Sultanat d’Oman.</p>
+      <a href="#logiciels" class="btn">Découvrir nos logiciels</a>
+    </div>
+
+    <!-- PHOTO D'ÉQUIPE -->
+    <div class="team-photo">
+      <img src="images/aquatsmartvision.jpg" alt="Logo Aqua-Smart" style="max-height: 250px;">
+    </div>
+
+    <!-- À propos -->
+    <section id="apropos">
+      <h2 class="section-title">À propos</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Notre mission</h3>
+          <p>Développer des systèmes intelligents pour la surveillance, la gestion et l’optimisation des fermes aquacoles, en intégrant IA, modélisation thermique, hydrodynamique et transfert technologique.</p>
+        </div>
+        <div class="card">
+          <h3>Vision Sud-Sud</h3>
+          <p>Aqua-Smart vise à établir un pont de coopération scientifique autour de l’aquaculture intelligente.</p>
+        </div>
+        <div class="card">
+          <h3>Site pilote</h3>
+          <p>Notre ferme aquacole intelligente est en cours de développement à Bou-Ismail (Tipaza), en partenariat avec le CNRDPA, CAPA et ANDPA.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOGICIELS -->
+    <section id="logiciels">
+      <h2 class="section-title">Nos logiciels innovants</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Aquat-Smart Vision</h3>
+          <p>Détection intelligente des poissons et diagnostic des maladies en temps réel via smartphone ou webcam HD.</p>
+          <ul style="padding-left: 1.2rem; margin: 0.8rem 0;">
+            <li>Détection CNN (TensorFlow) des maladies : ulcères, fongite, immobilité</li>
+            <li>Estimation du poids et ratio de forme</li>
+            <li>Cadres colorés : <span style="color:red;">rouge</span> (ulcère), <span style="color:white;background:#333;padding:0 3px;border-radius:2px;">blanc</span> (fongite), <span style="color:blue;">bleu</span> (immobilité)</li>
+            <li>Génération automatique de rapports PDF avec logo Aqua-Smart</li>
+          </ul>
+          <div class="demo-media">
+            <video controls poster="images/aquatsmartvision.jpg">
+              <source src="vision.mp4" type="video/mp4">
+              Votre navigateur ne supporte pas la vidéo.
+            </video>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>aquafiltre-Designer</h3>
+          <p>Outil de conception géométrique et dimensionnement de filtres biologiques pour RAS aquacoles.</p>
+          <ul style="padding-left: 1.2rem; margin: 0.8rem 0;">
+            <li>Calcul automatique du volume de biofiltre pour [NH₄⁺] &lt; 0.5 mg/L</li>
+            <li>Prise en compte du pH, température, O₂ dissous, débit et pompe</li>
+            <li>Analyse des risques (NH₃ toxique, hypoxie)</li>
+            <li>Export PDF professionnel avec logo et recommandations</li>
+          </ul>
+          <div class="demo-media">
+            <video controls poster="images/aquatsmartvision.jpg">
+              <source src="aquafiltre.mp4" type="video/mp4">
+              Votre navigateur ne supporte pas la vidéo.
+            </video>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ÉQUIPE -->
+    <section id="equipe">
+      <h2 class="section-title">Notre équipe Aqua-Smart</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>USTHB – Commité de pilotage</h3>
+          <div class="team-grid">
+            <div class="team-member"><h4>KHALI Samir</h4><p>Professeur<br><strong>Responsable de l’équipe</strong></p></div>
+            <div class="team-member"><h4>BOUSRI Ali</h4><p>Professeur</p></div>
+            <div class="team-member"><h4>HAROUADI Farid</h4><p>Professeur</p></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>CNRDPA – Aquaculture & Santé Piscicole</h3>
+          <div class="team-grid">
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Partenaires Institutionnels</h3>
+          <div class="team-grid">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJETS -->
+    <section id="projets">
+      <h2 class="section-title">Projets & Livrables</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Aquat-Smart Vision v2.8.4</h3>
+          <p>Logiciel de détection de poissons, estimation de poids, détection de maladies (ulcères, fongite, immobilité), rapports PDF automatisés.</p>
+        </div>
+        <div class="card">
+          <h3>aquafiltre-Designer</h3>
+          <p>Dimensionnement automatisé de filtres biologiques avec prise en compte des paramètres hydriques et chimiques critiques.</p>
+        </div>
+        <div class="card">
+          <h3>Smart Ferme Pilote</h3>
+          <p>Ferme aquacole intelligente à Bou-Ismail avec suivi thermique, filtration, et désinfection UV.</p>
+        </div>
+        <div class="card">
+          <h3>Thèse en cours</h3>
+          <p>Stratification thermique et dissolution d’oxygène dans les bassins RAS.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARTENAIRES AVEC LOGOS -->
+    <section id="partenaires">
+      <h2 class="section-title">Nos partenaires</h2>
+      <div class="partners-logos">
+        <div class="partner-logo">
+          <img src="usthb.jpg" alt="USTHB">
+          <div class="partner-name">USTHB</div>
+        </div>
+        <div class="partner-logo">
+          <img src="cnrdpa.jpg" alt="CNRDPA">
+          <div class="partner-name">CNRDPA</div>
+        </div>
+        <div class="partner-logo">
+          <img src="capa.jpg" alt="CAPA">
+          <div class="partner-name">CAPA</div>
+        </div>
+        <div class="partner-logo">
+          <img src="andpa.jpg" alt="ANDPA">
+          <div class="partner-name">ANDPA</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2 class="section-title">Contact</h2>
+      <div class="contact-form">
+        <div class="form-group">
+          <label for="nom">Nom / Institution</label>
+          <input type="text" id="nom" placeholder="Ex: USTHB, Département X">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="votre@email.com">
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="Collaboration, visite, stage, etc."></textarea>
+        </div>
+        <button class="btn" onclick="alert('Formulaire simulé – dans une version réelle, les données seraient envoyées à un serveur.')">Envoyer</button>
+      </div>
+      <p style="text-align: center; margin-top: 1.5rem; color: #555;">
+        <strong>Adresse :</strong> USTHB, BP 32, Bab Ezzouar, 16111, Alger, Algérie<br>
+        <strong>Responsable :</strong> Pr. KHALI Samir +213778445467
+        <strong>Tél: :</strong> +213778445467
+        <strong>E-mail :</strong> aqua.smart2025@gmail.com
+      </p>
+    </section>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      &copy; 2025 Aqua-Smart – Projet interdisciplinaire USTHB / CNRDPA/CAPA/ANDPA
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
